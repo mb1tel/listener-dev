@@ -9,15 +9,7 @@ if (!REDIS_HOST_DEV && !REDIS_HOST_PROD) {
 
 let redis;
 
-if (REDIS_HOST_DEV) {
-  redis = new Redis({
-    host: REDIS_HOST_DEV,
-    port: 6379,
-    password: process.env.REDIS_PASSWORD || "",
-    db: 0,
-    connectTimeout: 5000
-  });
-} else {
+if (REDIS_HOST_PROD) {
   redis = new Redis.Cluster(
     [{ host: REDIS_HOST_PROD }],
     {
@@ -28,6 +20,14 @@ if (REDIS_HOST_DEV) {
       }
     }
   );
+} else {
+  redis = new Redis({
+    host: REDIS_HOST_DEV,
+    port: 6379,
+    password: process.env.REDIS_PASSWORD || "",
+    db: 0,
+    connectTimeout: 5000
+  });
 }
 
 redis.on("error", (err) => {
