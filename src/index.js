@@ -14,10 +14,10 @@ const io = new Server(server, {
   cors: {
     origin: "*", // Dùng cho demo; production cần giới hạn origin
     methods: ["GET", "POST"],
-    transports: ['websocket', 'polling'],
-    credentials: true
+    // transports: ['websocket', 'polling'],
+    // credentials: true
   },
-  allowEIO3: true // fix loi polling 400 bad request mot so client cu.
+  // allowEIO3: true // fix loi polling 400 bad request mot so client cu.
 });
 app.use(express.json());
 app.use(cors({
