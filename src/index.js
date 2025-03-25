@@ -10,10 +10,12 @@ import redis from "./config/redisClient.js";
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
+  path: "/listener", // Đổi path theo FE
   cors: {
     origin: "*", // Dùng cho demo; production cần giới hạn origin
     methods: ["GET", "POST"]
-  }
+  },
+  transports: ["websocket"], // Chỉ cho phép WebSocket, tắt Polling
 });
 app.use(express.json());
 app.use(cors({
