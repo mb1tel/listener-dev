@@ -70,9 +70,14 @@ jobs:
           --from-literal=REDIS_PASSWORD="${{ secrets.REDIS_PASSWORD }}" \
           -n production
 
+    # - name: Restore K8s Files
+    #   run: |
+    #     echo "${{ secrets.K8S_TAR_BASE64 }}" | base64 --decode | tar -xzf -
+
     - name: Restore K8s Files
       run: |
-        echo "${{ secrets.K8S_TAR_BASE64 }}" | base64 --decode | tar -xzf -
+        mkdir -p k8s
+        echo "${{ secrets.K8S_TAR_BASE64 }}" | base64 --decode | tar -xzf - -C k8s
 
     - name: Debug K8s Extract
       run: ls -lah
