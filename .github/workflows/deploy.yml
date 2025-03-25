@@ -63,8 +63,8 @@ jobs:
 
     - name: Create Kubernetes Secret General
       run: |
-        kubectl delete secret hooksapi-secret -n production --ignore-not-found
-        kubectl create secret generic hooksapi-secret \
+        kubectl delete secret $(basename ${{ github.repository }})-secret -n production --ignore-not-found
+        kubectl create secret generic $(basename ${{ github.repository }})-secret \
           --from-literal=PORT="${{ secrets.INSTANCE_PORT }}" \
           --from-literal=REDIS_HOST="${{ secrets.REDIS_HOST }}" \
           --from-literal=REDIS_PASSWORD="${{ secrets.REDIS_PASSWORD }}" \
