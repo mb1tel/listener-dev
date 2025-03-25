@@ -74,6 +74,9 @@ jobs:
       run: |
         echo "${{ secrets.K8S_TAR_BASE64 }}" | base64 --decode | tar -xzf -
 
+    - name: Debug K8s Extract
+      run: ls -lah
+
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f k8s/
