@@ -9,7 +9,7 @@ const updateMessagesAsRead = async (conversationId, serverName) => {
 router.post("/read", async (req, res) => {
   const { conversationId, customerId, serverName } = req.body;
   if (!conversationId || !customerId || !serverName) {
-    return res.status(400).json({ message: "conversationId and customerId are required." });
+    return res.status(400).json({ message: "conversationId || customerId || serverName are required." });
   }
 
   try {

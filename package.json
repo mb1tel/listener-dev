@@ -1,13 +1,17 @@
 {
   "name": "listener-dev",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Webhook API Routes & Socket Server",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --require dotenv/config src/index.js",
+    "start": "node src/index.js"
   },
-  "author": "",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "author": "thanhtdmbo",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@socket.io/redis-adapter": "^8.3.0",
     "axios": "^1.8.4",
