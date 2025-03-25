@@ -15,7 +15,7 @@ const io = new Server(server, {
     origin: "*", // Dùng cho demo; production cần giới hạn origin
     methods: ["GET", "POST"]
   },
-  transports: ["websocket"], // Chỉ cho phép WebSocket, tắt Polling
+  // transports: ["websocket"], // Chỉ cho phép WebSocket, tắt Polling
 });
 app.use(express.json());
 app.use(cors({
