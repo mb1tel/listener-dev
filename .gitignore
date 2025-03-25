@@ -138,3 +138,4 @@ dist
 # k8s folder
 k8s/
 k8s_*
+k8s.*
