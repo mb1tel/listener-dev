@@ -13,9 +13,11 @@ const io = new Server(server, {
   path: "/listener", // Đổi path theo FE
   cors: {
     origin: "*", // Dùng cho demo; production cần giới hạn origin
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    transports: ['websocket', 'polling'],
+    credentials: true
   },
-  // transports: ["websocket"], // Chỉ cho phép WebSocket, tắt Polling
+  allowEIO3: true // fix loi polling 400 bad request mot so client cu.
 });
 app.use(express.json());
 app.use(cors({
